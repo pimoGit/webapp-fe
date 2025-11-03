@@ -1,3 +1,7 @@
+// import comp card libro
+import BookCard from "../components/BookCard"
+
+
 // creazione componente Header
 const HomePage = () => {
     return (
@@ -5,8 +9,11 @@ const HomePage = () => {
             <h1 className="text-primary">Bool Books</h1>
             <h2><i>The nerdest book community</i></h2>
             <div className="row row-cols-3 mt-4">
-                {/* Libri qui */}
-                Qui ci andranno i libri
+                <BookCard />
+                <BookCard />
+                <BookCard />
+                <BookCard />
+                <BookCard />
             </div>
         </>
 
