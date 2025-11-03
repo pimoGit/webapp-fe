@@ -1,12 +1,28 @@
-import './App.css'
+// import './App.css'
+
+// import delle pages
+import HomePage from './pages/HomePage'
+import BookPage from './pages/BookPage'
+// import layout
+import DefaultLayout from './layouts/DefaultLayout'
+
+// import degli elemnti React di gestione router
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+
 
 function App() {
 
     return (
         <>
-            <div>
-                <h1>Benvenuti nella nostra APP dei libri</h1>
-            </div>
+            <BrowserRouter>
+                <Routes>
+                    <Route element={<DefaultLayout />}>
+                        <Route path='/' element={<HomePage />} />
+                        <Route path='/books/:id' element={<BookPage />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
         </>
     )
 }
