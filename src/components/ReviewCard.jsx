@@ -1,13 +1,17 @@
 // creazione componente Header
-const ReviewCard = () => {
+const ReviewCard = ({ reviewProp }) => {
+
+    // destrutturiamo oggetto review
+    const { name, vote, text } = reviewProp;
+
     return (
         <div className="card mb-4">
             <div className="card-body">
                 <p className="card-text">
-                    testo della recensione
+                    {text}
                 </p>
-                <strong>Vote: 5</strong>
-                <address><i>By nome utente</i></address>
+                <strong>Vote: {vote}</strong>
+                <address><i>By {name}</i></address>
             </div>
         </div>
     )
