@@ -57,6 +57,7 @@ const BookPage = () => {
             <section id="reviews">
                 <header className="d-flex justify-content-between align-items-center mb-4">
                     <h4>Our community reviews</h4>
+                    <h5>media voto: {book?.average_vote}</h5>
                 </header>
                 {renderReviews()}
             </section>
