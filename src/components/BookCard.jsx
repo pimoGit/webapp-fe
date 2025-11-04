@@ -2,17 +2,21 @@
 import { Link } from "react-router-dom"
 
 // creazione componente Header
-const BookCard = () => {
+const BookCard = ({ bookProp }) => {
+
+    // destrutturiamo oggetto passato da props
+    const { id, title, author, abstract, image } = bookProp;
+
     return (
         <div className="card mb-4">
-            <img src="http://grupoalmuzara.com/libro/9788417954611_portada.jpg" alt="titolo libro" />
+            <img src={image} alt={title} className="card-img-top" />
             <div className="card-body">
-                <h5 className="card-title">Titolo Libro</h5>
-                <address><i>Autore</i></address>
+                <h5 className="card-title">{title}</h5>
+                <address><i>{author}</i></address>
                 <p className="card-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam, quam! Quaerat molestias autem hic neque quia quod asperiores, vel veniam mollitia repellat illo repudiandae praesentium qui deserunt velit adipisci explicabo!
+                    {abstract}
                 </p>
-                <Link to="books/1" className="btn btn-primary">
+                <Link to={`books/${id}`} className="btn btn-primary">
                     See more
                 </Link>
             </div>

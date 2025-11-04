@@ -12,7 +12,7 @@ import BookCard from "../components/BookCard"
 const HomePage = () => {
 
     // prepariamo var di stato libri
-    const [books, setBooks] = useState();
+    const [books, setBooks] = useState([]);
 
     // prepariamo funzione per la chiamata axios
     const fecthBooks = () => {
@@ -24,16 +24,23 @@ const HomePage = () => {
     // faccio partire la chiamata a primo montaggio comp
     useEffect(fecthBooks, []);
 
+    // funzione di generazione istanze libri
+    const renderBooks = () => {
+        return books.map(book => {
+            return (
+                <div className="col" key={book.id}>
+                    <BookCard bookProp={book} />
+                </div>
+            )
+        })
+    }
+
     return (
         <>
             <h1 className="text-primary">Bool Books</h1>
             <h2><i>The nerdest book community</i></h2>
             <div className="row row-cols-3 mt-4">
-                <BookCard />
-                <BookCard />
-                <BookCard />
-                <BookCard />
-                <BookCard />
+                {renderBooks()}
             </div>
         </>
 
