@@ -2,7 +2,7 @@
 import axios from "axios"
 
 // import di router-dom per link
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams, useNavigate } from "react-router-dom"
 
 // import state e effetc
 import { useState, useEffect } from "react"
@@ -12,6 +12,9 @@ import ReviewCard from "../components/ReviewCard"
 
 // creazione componente Header
 const BookPage = () => {
+
+    // creiamo istanza di Navigate
+    const redirect = useNavigate();
 
     // prepariamo var di stato libro
     const [book, setBook] = useState();
@@ -23,7 +26,10 @@ const BookPage = () => {
     const fecthBook = () => {
         axios.get('http://localhost:3000/api/books/' + id)
             .then(response => { setBook(response.data) })
-            .catch(error => { console.log(error) })
+            .catch(error => {
+                console.log(error)
+                if (error.status === 404) redirect('/404')
+            })
     }
 
     // faccio partire la chiamata a primo montaggio comp
