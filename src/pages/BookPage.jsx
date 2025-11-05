@@ -9,6 +9,8 @@ import { useState, useEffect } from "react"
 
 // import comp singola review
 import ReviewCard from "../components/ReviewCard"
+// import comp form review
+import ReviewForm from "../components/ReviewForm"
 
 // creazione componente Header
 const BookPage = () => {
@@ -60,6 +62,9 @@ const BookPage = () => {
                     <h5>media voto: {book?.average_vote}</h5>
                 </header>
                 {renderReviews()}
+            </section>
+            <section>
+                <ReviewForm idProp={id} reloadReviews={fecthBook} />
             </section>
             <footer className="border-top border-1 pt-2 mb-3 d-flex justify-content-end">
                 <Link className="btn btn-secondary" to="/">Back to home</Link>
