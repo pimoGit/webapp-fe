@@ -7,18 +7,31 @@ import { useState, useEffect } from "react"
 // import comp card libro
 import BookCard from "../components/BookCard"
 
+// import hook per contesto
+import { useGlobal } from "../contexts/GlobalContext"
+
 
 // creazione componente Header
 const HomePage = () => {
+
+    // funzione di deelay solo per test sviluppo
+    // function deelayLoading() {
+    //     setIsLoading(false)
+    // }
+
+    // etrapoliamo da context var di stato
+    const { setIsLoading } = useGlobal();
 
     // prepariamo var di stato libri
     const [books, setBooks] = useState([]);
 
     // prepariamo funzione per la chiamata axios
     const fecthBooks = () => {
+        setIsLoading(true);
         axios.get('http://localhost:3000/api/books')
             .then(response => { setBooks(response.data) })
             .catch(error => { console.log(error) })
+            .finally(() => { setIsLoading(false) })
     }
 
     // faccio partire la chiamata a primo montaggio comp

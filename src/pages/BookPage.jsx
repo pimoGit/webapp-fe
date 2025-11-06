@@ -12,8 +12,19 @@ import ReviewCard from "../components/ReviewCard"
 // import comp form review
 import ReviewForm from "../components/ReviewForm"
 
+// import hook per contesto
+import { useGlobal } from "../contexts/GlobalContext"
+
 // creazione componente Header
 const BookPage = () => {
+
+    // funzione di deelay solo per test sviluppo
+    // function deelayLoading() {
+    //     setIsLoading(false)
+    // }
+
+    // etrapoliamo da context var di stato
+    const { setIsLoading } = useGlobal();
 
     // creiamo istanza di Navigate
     const redirect = useNavigate();
@@ -26,12 +37,14 @@ const BookPage = () => {
 
     // prepariamo funzione per la chiamata axios
     const fecthBook = () => {
+        setIsLoading(true);
         axios.get('http://localhost:3000/api/books/' + id)
             .then(response => { setBook(response.data) })
             .catch(error => {
                 console.log(error)
                 if (error.status === 404) redirect('/404')
             })
+            .finally(() => { setIsLoading(false) })
     }
 
     // faccio partire la chiamata a primo montaggio comp

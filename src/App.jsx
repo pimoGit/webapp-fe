@@ -10,21 +10,26 @@ import DefaultLayout from './layouts/DefaultLayout'
 // import degli elemnti React di gestione router
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
+// import del provider context globale
+import { GlobalProvider } from './contexts/GlobalContext'
+
 
 
 function App() {
 
     return (
         <>
-            <BrowserRouter>
-                <Routes>
-                    <Route element={<DefaultLayout />}>
-                        <Route index element={<HomePage />} />
-                        <Route path='/books/:id' element={<BookPage />} />
-                        <Route path='*' element={<NotFoundPage />} />
-                    </Route>
-                </Routes>
-            </BrowserRouter>
+            <GlobalProvider>
+                <BrowserRouter>
+                    <Routes>
+                        <Route element={<DefaultLayout />}>
+                            <Route index element={<HomePage />} />
+                            <Route path='/books/:id' element={<BookPage />} />
+                            <Route path='*' element={<NotFoundPage />} />
+                        </Route>
+                    </Routes>
+                </BrowserRouter>
+            </GlobalProvider>
         </>
     )
 }
