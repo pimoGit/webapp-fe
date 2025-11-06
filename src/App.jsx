@@ -4,6 +4,7 @@
 import HomePage from './pages/HomePage'
 import BookPage from './pages/BookPage'
 import NotFoundPage from './pages/NotFoundPage'
+import CreateBookPage from './pages/CreateBookPage'
 // import layout
 import DefaultLayout from './layouts/DefaultLayout'
 
@@ -25,6 +26,7 @@ function App() {
                         <Route element={<DefaultLayout />}>
                             <Route index element={<HomePage />} />
                             <Route path='/books/:id' element={<BookPage />} />
+                            <Route path='/books/create' element={<CreateBookPage />} />
                             <Route path='*' element={<NotFoundPage />} />
                         </Route>
                     </Routes>
